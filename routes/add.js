@@ -17,7 +17,7 @@ router.post('/submit', function(req, res, next) {
 	var tags = req.body.tags;
  var models = require('../models/');
 
-  var p = new models.Page({ "title": title, "body":cont, "url_name":url_name, "tags": tags});
+  var p = new models.Page({ "title": title, "body":cont, "url_name":url_name, "tags": tags.split(',')});
   p.save();
   res.redirect('/');
 });

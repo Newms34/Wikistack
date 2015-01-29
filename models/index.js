@@ -13,12 +13,22 @@ var pageSchema = new Schema({
   body:   String, //changes. duh.
   date: { type: Date, default: Date.now }, //updates every update
   status: Number,
-  tags: String
+  tags: Array
 });
 
 pageSchema.virtual('full_route').get(function(){
   return '/wiki/'+this.url_name;
 });
+
+pageSchema.static.findTags = function( tag ) {
+  //search through tags, return true if tag is present
+  for( var t in this.tags ){
+    if (t === tag){
+      return true;
+    }
+  }
+      return false;
+}
 
 var userSchema = new Schema({
   name:  {

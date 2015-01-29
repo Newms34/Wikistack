@@ -17,9 +17,26 @@ router.get('/wiki/:page', function(req, res, next){
 	test.findOne(function(err, pages){
 
  		console.log(pages);
-		res.render('show', {title: page, page: pages, tags: pages.tags.split(',')});
+		res.render('show', {title: page, page: pages, tags: pages.tags});
 	})
 	
 }) 
+
+router.get('/wiki/tag/:tag', function(req, res, next){
+	var webTag = req.params.tag;
+
+	// var test = models.Page.where({tag: {$in: tag}});
+	// test.find(function(err, pages){
+
+	models.Page.find( this.findTags(webTag) , function(err, pages){
+
+		console.log(models.Page.find({tag: }))
+ 		console.log(pages);
+ 		res.json(pages);
+
+		//res.render('show', {title: tag, page: pages, tags: pages.tags.split(',')});
+	})
+	
+})
 
 module.exports = router;
