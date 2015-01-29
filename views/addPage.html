@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1>ADD A PAGE</h1>
+  	<hr width:80%/>
+  	<div id='formDiv'>
+  <form action = '/add/submit' method='POST' name='newPageForm' >
+  	<label for='pageTi'>PAGE TITLE</label><br/>
+  	<input type='text' id='pageTi' name='pageTi'/><br/>
+  	<br/>
+  	<label for='pageCo'>PAGE CONTENT</label><br/>
+  	<textarea name='pageCo' id='pageCo'></textarea><br/>
+  	<input type='submit' class='btn btn-info' value='Submit'>
+  </form>
+</div>
+{% endblock %}
