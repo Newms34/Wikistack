@@ -12,6 +12,7 @@ var add_routes = require('./routes/add');
 
 var app = express();
 app.engine('html', swig.renderFile);
+require('./filters')(swig);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

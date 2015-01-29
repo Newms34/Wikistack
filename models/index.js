@@ -12,7 +12,8 @@ var pageSchema = new Schema({
   owner_id:   String, //changes per update
   body:   String, //changes. duh.
   date: { type: Date, default: Date.now }, //updates every update
-  status: Number
+  status: Number,
+  tags: String
 });
 
 pageSchema.virtual('full_route').get(function(){

@@ -1,26 +1,25 @@
 var express = require('express');
 var router = express.Router();
-
+var filters = require('../filters');
 var models = require('../models/');
-// var mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost/wikistack');
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	models.Page.find(function(err, pages){
 		
 		res.render('index', { title: 'Express', docs: pages});
 	});
-
-
- 
 });
 
-// router.get('/add', function (req,res){
-// 	res.render('addPage')
-// })
+router.get('/wiki/:page', function(req, res, next){
+	var page = req.params.page;
+
+	var test = models.Page.where({url_name: page});
+	test.findOne(function(err, pages){
+
+ 		console.log(pages);
+		res.render('show', {title: page, page: pages, tags: pages.tags.split(',')});
+	})
+	
+}) 
 
 module.exports = router;

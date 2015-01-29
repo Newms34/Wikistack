@@ -1,0 +1,13 @@
+
+{% extends "layout.html" %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+  {{title}}<hr>
+  {{page.body|marked}}
+  {% for tag in tags %}
+	      <li>{{tag}}</li>
+	{% endfor %}
+
+{% endblock %}
