@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
- var models = require('../models/');
+var models = require('../models/');
 // var mongoose = require('mongoose');
 // mongoose.connect('mongodb://localhost/wikistack');
 // var db = mongoose.connection;
@@ -10,11 +10,13 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	var allDocs = models.Page.find();
-	console.log('-------LINE--------');
-	console.log(allDocs);
+	models.Page.find(function(err, pages){
+		
+		res.render('index', { title: 'Express', docs: pages});
+	});
 
-  res.render('index', { title: 'Express'});
+
+ 
 });
 
 // router.get('/add', function (req,res){

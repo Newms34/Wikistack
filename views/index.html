@@ -4,8 +4,9 @@
     <h1>{{title}}</h1>
     <p>Welcome to {{title}}</p>
    	<ul>
+   		List o Files
   	{% for doc in docs %}
-    	<li><a href='#'>{{doc.title}}</a></li>
+    	<li><a href='/{{doc.url_name}}.html'>{{doc.title}}</a></li>
   	{% endfor %}
 	</ul>
 {% endblock %}
