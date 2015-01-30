@@ -20,15 +20,9 @@ pageSchema.virtual('full_route').get(function(){
   return '/wiki/'+this.url_name;
 });
 
-pageSchema.static.findTags = function( tag ) {
-  //search through tags, return true if tag is present
-  for( var t in this.tags ){
-    if (t === tag){
-      return true;
-    }
-  }
-      return false;
-}
+pageSchema.statics.findByTags = function( tag,cb ) {
+this.find({tags: {$elemMatch: {$in: [tag]}}},cb);
+};
 
 var userSchema = new Schema({
   name:  {
