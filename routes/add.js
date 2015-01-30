@@ -6,7 +6,7 @@ var router = express.Router();
 
 
 router.get('/', function(req, res, next) {
-  res.render('addPage');
+  res.render('addPage',{});
 });
 
 router.post('/submit', function(req, res, next) {
@@ -14,10 +14,12 @@ router.post('/submit', function(req, res, next) {
 	var title = req.body.pageTi;
 	var cont = req.body.pageCo;
 	var url_name = title.replace(/[^A-Za-z0-9\s]/g,'').replace(/\s/gi,'_');
-	var tags = req.body.tags;
+	var tags = req.body.tags.split(',').map(function(tag) {
+    	return tag.trim()
+  	})
  var models = require('../models/');
 
-  var p = new models.Page({ "title": title, "body":cont, "url_name":url_name, "tags": tags.split(',')});
+  var p = new models.Page({ "title": title, "body":cont, "url_name":url_name, "tags": tags});
   p.save();
   res.redirect('/');
 });

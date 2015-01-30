@@ -24,6 +24,10 @@ pageSchema.statics.findByTags = function( tag,cb ) {
 this.find({tags: {$elemMatch: {$in: [tag]}}},cb);
 };
 
+pageSchema.statics.findAllTags = function( tagArray,cb ) {
+this.find({tags: {$elemMatch: {$in: tagArray}}},cb);
+};
+
 var userSchema = new Schema({
   name:  {
       first: String,

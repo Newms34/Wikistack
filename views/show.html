@@ -4,11 +4,17 @@
 {% block title %} {% endblock %}
 
 {% block content %}
+<a href='/wiki/{{page.url_name}}/edit'>EDIT THIS PAGE</a>
   {{title}}<hr>
   {{page.body|marked}}
   Categories:
-  {% for tag in tags %}
+ 	{% for tag in tags %}
 	      |<li class='tagList'><a href='/wiki/tag/{{tag}}'>{{tag}}</a></li>|
+	{% endfor %}
+
+  You probably aren't also interested in:
+ 	{% for simPage in similar %}
+	      |<li class='tagList'><a href='/wiki/{{simPage.url_name}}'>{{simPage.title}}</a></li>|
 	{% endfor %}
 
 {% endblock %}

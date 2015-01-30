@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+   <h1>EDIT A PAGE </h1>
+     <hr width:80%/>
+     <div id='formDiv'>
+ <form action = '/edit/submit' method='POST' name='newPageForm' >
+   
+    Editing: {{pages.title}}
+
+    <!-- The following hidden field -->
+    <input type=hidden value='{{pages.title}}' name='pageTi'/>
+    <input type=hidden value='{{pages._id}}' name='pageId'/>
+     <br/>
+     <label for='pageCo'>PAGE CONTENT</label><br/>
+     <textarea name='pageCo' id='pageCo'>{{pages.body}}</textarea><br/>
+   <label for='tags'>PAGE TAGS</label><br/>
+   <input type='text' id='tags' name='tags' value='{{pages.tags}}'/><br/>
+   
+     <input type='submit' class='btn btn-info' value='Submit'>
+ </form>
+</div>
+{% endblock %}
