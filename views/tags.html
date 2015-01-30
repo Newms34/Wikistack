@@ -1,0 +1,18 @@
+
+{% extends "layout.html" %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+ 	Category:{{title}}<hr>
+ 	<h2>This page shows the pages in the {{title}} category.</h2>
+ 	<br/> Its styling and word choice are pretty awful right now.
+ 	<ul>
+ 		List of pages with the {{title}} tag:
+ 	{% for page in pages %}
+
+	      <li><a href='/wiki/{{page.url_name}}'>{{page.title}}</a></li>
+	{% endfor %}
+	</ul>
+
+{% endblock %}

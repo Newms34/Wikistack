@@ -16,7 +16,6 @@ router.get('/wiki/:page', function(req, res, next){
 	var test = models.Page.where({url_name: page});
 	test.findOne(function(err, pages){
 
- 		console.log(pages);
 		res.render('show', {title: page, page: pages, tags: pages.tags});
 
 	})
@@ -29,8 +28,12 @@ router.get('/wiki/tag/:tag', function(req, res, next){
 	// var test = models.Page.where({tag: {$in: tag}});
 	// test.find(function(err, pages){
 	models.Page.findByTags(webTag, function (err,pages){
-		console.log(pages);
-	res.render('show', {title: webTag, page: pages, tags: pages.tags})
+		if (pages.length==0){
+			res.redirect('/');
+		}
+		else{
+		res.render('tags', {title: webTag, pages: pages});
+		}
 	});
     //res.render('show', {title: tag, page: pages, tags: pages.tags.split(',')});
 });

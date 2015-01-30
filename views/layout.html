@@ -1,4 +1,4 @@
-<!-- layout.html -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +8,7 @@
   </head>
   <body>
   	<div class='main'>
-  	<div class='header'><div id='homeBut'>WIKISTACK</div> <div id='addPage' onclick = "window.location.assign('/add')" style = "cursor: pointer">ADD PAGE</div></div>
+  	<div class='header'><div id='homeBut' class='nav' onclick = "window.location.assign('/')" title='Go to Home Page'>WIKISTACK</div>&nbsp;<div id='addPage' class='nav' onclick = "window.location.assign('/add')" title='Contribute to the Wiki'>ADD PAGE</div></div>
 
    {% block content %}{% endblock %}
 </div>
